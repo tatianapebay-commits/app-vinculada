@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Butaca · Cargar una recomendación</title>
+
+  <!-- Tipografías del proyecto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Karla:wght@400;600&display=swap" rel="stylesheet">
+<!-- Configuración PWA para Celulares -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff02c8">
+<meta name="mobile-web-app-capable" content="yes">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="pagina">
+
+    <!-- ===== Panel izquierdo: presentación de la app ===== -->
+    <aside class="panel">
+      <p class="marca">Butaca</p>
+      <h1 class="panel__titulo">Contá qué vale la pena ver</h1>
+      <p class="panel__texto">
+        Cada ficha que cargás se suma al catálogo público. Escribí la reseña
+        pensando en alguien que todavía no sabe si empezarla.
+      </p>
+
+      <ul class="tips">
+        <li>Sé concreto: qué te gustó y qué no.</li>
+        <li>Avisá si tu reseña tiene spoilers.</li>
+        <li>La portada ayuda a que otros la encuentren.</li>
+      </ul>
+    </aside>
+
+    <!-- ===== Formulario de alta ===== -->
+    <main class="contenido">
+
+      <form class="formulario" action="#" method="post">
+
+        <!-- ---------- Bloque 1: datos de la obra ---------- -->
+        <fieldset class="bloque">
+          <legend class="bloque__titulo">La obra</legend>
+
+          <div class="campo">
+            <label for="titulo">Título</label>
+            <input
+              type="text"
+              id="titulo"
+              name="titulo"
+              placeholder="Ej: Cowboy Bebop"
+              maxlength="80"
+              required>
+          </div>
+
+          <div class="fila">
+            <div class="campo">
+              <label for="tipo">Tipo de contenido</label>
+              <select id="tipo" name="tipo" required>
+                <option value="">Elegí una opción</option>
+                <option value="serie">Serie</option>
+                <option value="pelicula">Película</option>
+                <option value="anime">Anime</option>
+                <option value="juego">Videojuego</option>
+                <option value="documental">Documental</option>
+                <option value="libro">Libro</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label for="genero">Género</label>
+              <select id="genero" name="genero" required>
+                <option value="">Elegí una opción</option>
+                <option value="accion">Acción</option>
+                <option value="comedia">Comedia</option>
+                <option value="drama">Drama</option>
+                <option value="ciencia-ficcion">Ciencia ficción</option>
+                <option value="terror">Terror</option>
+                <option value="fantasia">Fantasía</option>
+                <option value="policial">Policial</option>
+                <option value="romance">Romance</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fila">
+            <div class="campo">
+              <label for="anio">Año de estreno</label>
+              <input
+                type="number"
+                id="anio"
+                name="anio"
+                placeholder="1998"
+                min="1900"
+                max="2030"
+                step="1">
+            </div>
+
+            <div class="campo">
+              <label for="plataforma">¿Dónde se puede ver?</label>
+              <input
+                type="text"
+                id="plataforma"
+                name="plataforma"
+                placeholder="Netflix, Steam, cine…"
+                list="plataformas">
+              <datalist id="plataformas">
+                <option value="Netflix"></option>
+                <option value="Max"></option>
+                <option value="Disney+"></option>
+                <option value="Prime Video"></option>
+                <option value="Crunchyroll"></option>
+                <option value="Steam"></option>
+              </datalist>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="portada">URL de la portada</label>
+            <input
+              type="url"
+              id="portada"
+              name="portada"
+              placeholder="https://ejemplo.com/portada.jpg">
+            <small class="ayuda">Pegá el link de una imagen. Si no tenés, dejalo vacío.</small>
+          </div>
+        </fieldset>
+
+        <!-- ---------- Bloque 2: la opinión ---------- -->
+        <fieldset class="bloque">
+          <legend class="bloque__titulo">Tu opinión</legend>
+
+          <div class="fila">
+            <div class="campo">
+              <label for="puntuacion">Puntuación (1 a 10)</label>
+              <input
+                type="number"
+                id="puntuacion"
+                name="puntuacion"
+                placeholder="8"
+                min="1"
+                max="10"
+                step="1"
+                required>
+            </div>
+
+            <div class="campo">
+              <label for="fecha-vista">¿Cuándo la terminaste?</label>
+              <input
+                type="date"
+                id="fecha-vista"
+                name="fecha_vista">
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="resena">Reseña</label>
+            <textarea
+              id="resena"
+              name="resena"
+              rows="5"
+              placeholder="Contá de qué va y cómo te resultó."
+              maxlength="600"
+              required></textarea>
+          </div>
+
+          <div class="campo">
+            <label for="motivo">¿Por qué la recomendás?</label>
+            <textarea
+              id="motivo"
+              name="motivo"
+              rows="3"
+              placeholder="En una o dos frases, el motivo para que otro la empiece."
+              maxlength="250"
+              required></textarea>
+          </div>
+
+          <!-- Checkboxes: varias opciones posibles -->
+          <div class="campo">
+            <span class="campo__etiqueta">Ideal para</span>
+            <div class="opciones">
+              <label class="opcion">
+                <input type="checkbox" name="ideal_para" value="maraton">
+                Maratonear un fin de semana
+              </label>
+              <label class="opcion">
+                <input type="checkbox" name="ideal_para" value="familia">
+                Ver en familia
+              </label>
+              <label class="opcion">
+                <input type="checkbox" name="ideal_para" value="fondo">
+                Poner de fondo mientras hacés otra cosa
+              </label>
+            </div>
+          </div>
+
+          <!-- Radios: una sola opción -->
+          <div class="campo">
+            <span class="campo__etiqueta">¿La volverías a ver?</span>
+            <div class="opciones opciones--fila">
+              <label class="opcion">
+                <input type="radio" name="revision" value="si" required>
+                Sí
+              </label>
+              <label class="opcion">
+                <input type="radio" name="revision" value="tal-vez">
+                Tal vez
+              </label>
+              <label class="opcion">
+                <input type="radio" name="revision" value="no">
+                No
+              </label>
+            </div>
+          </div>
+
+          <label class="opcion opcion--suelta">
+            <input type="checkbox" id="spoilers" name="spoilers" value="si">
+            Mi reseña contiene spoilers
+          </label>
+        </fieldset>
+
+        <!-- ---------- Bloque 3: quién la publica ---------- -->
+        <fieldset class="bloque">
+          <legend class="bloque__titulo">Quién la publica</legend>
+
+          <div class="fila">
+            <div class="campo">
+              <label for="usuario">Tu nombre de usuario</label>
+              <input
+                type="text"
+                id="usuario"
+                name="usuario"
+                placeholder="analia_b"
+                required>
+            </div>
+
+            <div class="campo">
+              <label for="email">Correo electrónico</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="vos@correo.com"
+                required>
+              <small class="ayuda">No se muestra en la ficha pública.</small>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="acciones">
+          <button type="submit" class="boton boton--principal">Publicar recomendación</button>
+          <button type="reset" class="boton boton--secundario">Vaciar el formulario</button>
+        </div>
+
+      </form>
+    </main>
+
+  </div>
+
+</body>
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('Service Worker registrado con éxito', reg))
+                .catch(err => console.error('Error al registrar Service Worker', err));
+        });
+    }
+</script>
+
+
+</html>
