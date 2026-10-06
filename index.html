@@ -9,10 +9,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Karla:wght@400;600&display=swap" rel="stylesheet">
-<!-- Configuración PWA para Celulares -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#ff02c8">
-<meta name="mobile-web-app-capable" content="yes">
+  
+  <!-- Configuración PWA para Celulares -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ff02c8">
+  <meta name="mobile-web-app-capable" content="yes">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -40,7 +41,8 @@
     <!-- ===== Formulario de alta ===== -->
     <main class="contenido">
 
-      <form class="formulario" action="#" method="post">
+      <!-- Agregado id="form-serie" -->
+      <form id="form-serie" class="formulario" action="#" method="post">
 
         <!-- ---------- Bloque 1: datos de la obra ---------- -->
         <fieldset class="bloque">
@@ -119,14 +121,15 @@
             </div>
           </div>
 
+          <!-- Portada dentro del fieldset -->
           <div class="campo">
-            <label for="portada">URL de la portada</label>
-            <input
-              type="url"
-              id="portada"
-              name="portada"
-              placeholder="https://ejemplo.com/portada.jpg">
-            <small class="ayuda">Pegá el link de una imagen. Si no tenés, dejalo vacío.</small>
+            <label for="imagen-file">Portada de la serie:</label>
+            <input 
+              type="file" 
+              id="imagen-file" 
+              accept="image/*" 
+              class="form-control"
+            >
           </div>
         </fieldset>
 
@@ -261,8 +264,8 @@
 
   </div>
 
-</body>
-<script>
+  <!-- Registro de Service Worker -->
+  <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('./sw.js')
@@ -270,7 +273,9 @@
                 .catch(err => console.error('Error al registrar Service Worker', err));
         });
     }
-</script>
+  </script>
 
-
+  <!-- Importación de app.js como módulo JavaScript -->
+  <script type="module" src="app.js"></script>
+</body>
 </html>
